@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# Diagram Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A keyboard-driven editor for creating commutative diagrams. Build complex diagrams of objects, arrows, and labels entirely through keyboard shortcuts—no mouse required.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Pure keyboard navigation**: Navigate and edit diagrams using vim-like keybindings
+- **Modal editing**: Switch between selecting, renaming, and moving modes for efficient workflow
 
-## React Compiler
+## Keyboard Shortcuts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All keybindings are defined in `src/editor/keybinds.ts`.
 
-## Expanding the ESLint configuration
+### Navigation (Selecting Mode)
+- **h / j / k / l** (or **Arrow Keys**): Move selection left/down/up/right
+- **Tab**: Select next object to the right
+- **]**: Cycle through arrows
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Creating Objects (Selecting Mode)
+- **Shift+H / J / K / L**: Create new object left/down/up/right of current selection
+- **Shift+U / I / N / M**: Create new object diagonally (up-left / up-right / down-left / down-right)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Editing
+- **r**: Enter renaming mode
+- **Enter**: Confirm rename and return to selecting mode
+- **Delete**: Delete selected object(s)
+- **Escape**: Return to selecting mode
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Modes
+- **Selecting**: Navigate and select objects (default)
+- **Renaming**: Edit object labels
+- **Moving**: Reposition objects
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Open your browser to the displayed local URL and start creating diagrams with your keyboard!
