@@ -1,0 +1,25 @@
+.readoutDatum {
+    display: flex;
+    flex-direction: row;
+    margin-right: 6px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    padding: 0px 10px;   
+}
+
+.readout {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px; 
+    padding: 5px; 
+    box-sizing: border-box; 
+}
+
+.readoutDatumKey {
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.readoutDatumValue {
+    color: #ff0000;
+}

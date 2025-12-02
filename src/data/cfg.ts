@@ -1,0 +1,1 @@
+export const BBOX_MARGIN = 0;
